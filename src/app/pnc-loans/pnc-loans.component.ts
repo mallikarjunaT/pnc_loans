@@ -2,20 +2,21 @@ import { AfterViewInit, Component } from '@angular/core';
 import { LabelType, NgxSliderModule } from '@angular-slider/ngx-slider';
 import { FormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-pnc-loans',
-  imports: [NgxSliderModule, FormsModule, NgClass],
+  imports: [NgxSliderModule, FormsModule, NgClass, RouterLink],
   templateUrl: './pnc-loans.component.html',
   styleUrl: './pnc-loans.component.css'
 })
 export class PncLoansComponent implements AfterViewInit {
 
-  
+
   filters: any;
   value: string
   pemi = {
-    value: 
-    25 as number
+    value:
+      25 as number
   }
   remi = {
     value: 8.5 as number

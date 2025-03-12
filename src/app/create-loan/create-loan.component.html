@@ -1,0 +1,166 @@
+<div class="container">
+    <div class="row">
+        <h4>Submit Your Loan Application</h4>
+        <hr>
+        <div class="col-6 mt-4">
+            <h5>Applicant Personal Details</h5>
+            <hr>
+            <div class="mb-3">
+                <div class="row">
+                    <div class="col-3">
+                        <label for="firstname" class="form-label fw-bold">Name</label>
+                        <select class="form-select form-select-md">
+                            <option value="Mr.">Mr</option>
+                            <option value="Mrs.">Mrs</option>
+                            <option value="Ms.">Ms</option>
+                        </select>
+                    </div>
+                    <div class="col-5">
+                        <label for="fname" class="form-label ">firstname</label>
+                        <input type="text" class="form-control" placeholder="">
+                    </div>
+                    <div class="col-4">
+                        <label for="lname" class="form-label ">lastname</label>
+                        <input type="text" class="form-control" placeholder="">
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="lastname" class="form-label fw-bold">Date Of Birth</label>
+                <input type="date" class="form-control" placeholder="dd/mm/yyyy">
+            </div>
+            <div class="mb-3">
+                <label for="pan" class="form-label fw-bold">PAN</label>
+                <input type="text" class="form-control" placeholder="ex: ATSPT6186F">
+            </div>
+            <div class="mb-3">
+                <label for="pan" class="form-label fw-bold">Adhar</label>
+                <div class="d-flex">
+                    <input type="number" style="width: 80%;" class="form-control" placeholder="ex: 821884539068">
+                    &nbsp;
+                    <button type="button" class="btn btn-md btn-primary">validate
+                        <span class="spinner-grow spinner-grow-sm"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="pan" class="form-label fw-bold">Loan Type</label>
+                <select class="form-select form-select-md">
+                    <option disabled>select Loan</option>
+                    <option value="personal">Personal Loan</option>
+                    <option value="home">Home Loan</option>
+                    <option value="car">Car Loan</option>
+                    <option value="auto">Auto Loan</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="pnumber" class="form-label fw-bold">Phone Number</label>
+                <input type="number" class="form-control" placeholder="">
+            </div>
+            <div class="mb-3">
+                <label for="pnumber" class="form-label fw-bold">Email</label>
+                <input type="email" class="form-control" placeholder="talluri@gmail.com" required>
+            </div>
+            <div class="row">
+                <label for="pnumber" class="form-label fw-bold">Home Address</label>
+                <div class="col-6">
+                    <input type="text" class="form-control" placeholder="" required>
+                    <span class="add_cl">Street Address</span>
+                </div>
+                <div class="col-6">
+                    <input type="text" class="form-control" placeholder="" required>
+                    <span class="add_cl">Street Address Line2</span>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-6">
+                    <input type="text" class="form-control" placeholder="" required>
+                    <span class="add_cl">City</span>
+                </div>
+                <div class="col-6">
+                    <input type="text" class="form-control" placeholder="" required>
+                    <span class="add_cl">State</span>
+                </div>
+
+            </div>
+            <div class="row mt-3">
+                <input type="text" class="form-control" placeholder="" required>
+                <span class="add_cl">Zipcode</span>
+            </div>
+
+        </div>
+        <div class="col-6 mt-4">
+            <h5>Work Details</h5>
+            <hr>
+            <div class="row">
+                <div class="mb-3">
+                    <label for="pan" class="form-label fw-bold">Job Title</label>
+                    <select class="form-select form-select-md">
+                        <option disabled>select Job</option>
+                        <option value="software">Soft ware</option>
+                        <option value="accounts">Accounts</option>
+                        <option value="hardware">Hard ware</option>
+                        <option value="graphic designer">Graphic Designer</option>
+                        <option value="testing">Testing</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3">
+                    <label for="total Years of Exp" class="form-label fw-bold">Total Years of Exp</label>
+                    <input type="number" class="form-control" placeholder="" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3">
+                    <label for="Monthly Net Income" class="form-label fw-bold">Monthly Net Income</label>
+                    <input type="number" class="form-control" placeholder="" required>
+                </div>
+            </div>
+            <div class="row">
+                <label for="pnumber" class="form-label fw-bold">Work Address</label>
+                <div class="col-6">
+                    <input type="text" class="form-control" placeholder="" required>
+                    <span class="add_cl">Street Address</span>
+                </div>
+                <div class="col-6">
+                    <input type="text" class="form-control" placeholder="" required>
+                    <span class="add_cl">Street Address Line2</span>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-6">
+                    <input type="text" class="form-control" placeholder="" required>
+                    <span class="add_cl">City</span>
+                </div>
+                <div class="col-6">
+                    <input type="text" class="form-control" placeholder="" required>
+                    <span class="add_cl">State</span>
+                </div>
+
+            </div>
+            <div class="row mt-4">
+                <input type="text" class="form-control" placeholder="" required>
+                <span class="add_cl">Zipcode</span>
+            </div>
+            <div class="mt-4">
+                <h5>Loan Details</h5>
+                <hr>
+                <div class="row">
+                    <div class="mb-3">
+                        <label for="Requested Loan Amount" class="form-label fw-bold">Requested Loan Amount</label>
+                        <span class="add_cl">(Max 100Lakh)</span>
+                        <input type="number" class="form-control" placeholder="" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3">
+                        <label for="Terms in (months)" class="form-label fw-bold">Terms in <span class="add_cl">(months)</span></label>
+                        <input type="number" class="form-control" placeholder="" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
