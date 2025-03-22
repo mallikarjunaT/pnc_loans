@@ -1,166 +1,374 @@
 <div class="container">
-    <div class="row">
-        <h4>Submit Your Loan Application</h4>
-        <hr>
-        <div class="col-6 mt-4">
-            <h5>Applicant Personal Details</h5>
-            <hr>
-            <div class="mb-3">
-                <div class="row">
-                    <div class="col-3">
-                        <label for="firstname" class="form-label fw-bold">Name</label>
-                        <select class="form-select form-select-md">
-                            <option value="Mr.">Mr</option>
-                            <option value="Mrs.">Mrs</option>
-                            <option value="Ms.">Ms</option>
-                        </select>
-                    </div>
-                    <div class="col-5">
-                        <label for="fname" class="form-label ">firstname</label>
-                        <input type="text" class="form-control" placeholder="">
-                    </div>
-                    <div class="col-4">
-                        <label for="lname" class="form-label ">lastname</label>
-                        <input type="text" class="form-control" placeholder="">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="row" style="background-color: aliceblue;">
+            <img src="../assets/loan-application.jpg">
+            <div class="col-6 mt-4">
+                <h5>Applicant Personal Details</h5>
+                <hr>
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col-3">
+                            <label for="firstname" class="form-label fw-bold">Name</label>
+                            <select class="form-select form-select-md" formControlName="mstype"
+                                [ngClass]="{ 'is-invalid': submitted && f['mstype'].errors }">
+                                <option value="Mr.">Mr</option>
+                                <option value="Mrs.">Mrs</option>
+                                <option value="Ms.">Ms</option>
+                            </select>
+                            @if (submitted && f['mstype'].errors) {
+                            <div class="invalid-feedback">
+                                @if (f['mstype'].errors['required']) {
+                                <div>mstype is required</div>
+                                }
+                            </div>
+                            }
+                        </div>
+                        <div class="col-5">
+                            <label for="fname" class="form-label ">firstname</label>
+                            <input type="text" class="form-control" formControlName="firstname" placeholder=""
+                                [ngClass]="{ 'is-invalid': submitted && f['firstname'].errors }">
+                            @if (submitted && f['firstname'].errors) {
+                            <div class="invalid-feedback">
+                                @if (f['firstname'].errors['required']) {
+                                <div>firstname is required</div>
+                                }
+                            </div>
+                            }
+                        </div>
+                        <div class="col-4">
+                            <label for="lname" class="form-label ">lastname</label>
+                            <input type="text" class="form-control" formControlName="lastname" placeholder=""
+                                [ngClass]="{ 'is-invalid': submitted && f['lastname'].errors }">
+                            @if (submitted && f['lastname'].errors) {
+                            <div class="invalid-feedback">
+                                @if (f['lastname'].errors['required']) {
+                                <div>lastname is required</div>
+                                }
+                            </div>
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="mb-3">
-                <label for="lastname" class="form-label fw-bold">Date Of Birth</label>
-                <input type="date" class="form-control" placeholder="dd/mm/yyyy">
-            </div>
-            <div class="mb-3">
-                <label for="pan" class="form-label fw-bold">PAN</label>
-                <input type="text" class="form-control" placeholder="ex: ATSPT6186F">
-            </div>
-            <div class="mb-3">
-                <label for="pan" class="form-label fw-bold">Adhar</label>
-                <div class="d-flex">
-                    <input type="number" style="width: 80%;" class="form-control" placeholder="ex: 821884539068">
-                    &nbsp;
+                <div class="mb-3">
+                    <label for="lastname" class="form-label fw-bold">Date Of Birth</label>
+                    <input type="date" class="form-control" formControlName="dateofbirth" placeholder="dd/mm/yyyy"
+                        [ngClass]="{ 'is-invalid': submitted && f['dateofbirth'].errors }">
+                    @if (submitted && f['dateofbirth'].errors) {
+                    <div class="invalid-feedback">
+                        @if (f['dateofbirth'].errors['required']) {
+                        <div>dateofbirth is required</div>
+                        }
+                    </div>
+                    }
+                </div>
+                <div class="mb-3">
+                    <label for="pan" class="form-label fw-bold">PAN</label>
+                    <input type="text" class="form-control" formControlName="pan" placeholder="ex: ATSPT6186F"
+                        [ngClass]="{ 'is-invalid': submitted && f['pan'].errors }">
+                    @if (submitted && f['pan'].errors) {
+                    <div class="invalid-feedback">
+                        @if (f['pan'].errors['required']) {
+                        <div>pan is required</div>
+                        }
+                    </div>
+                    }
+                </div>
+                <div class="mb-3">
+                    <label for="pan" class="form-label fw-bold">Adhar</label>
+                    <div class="d-flex">
+                        <input type="number" class="form-control" formControlName="adhar"
+                            [ngClass]="{ 'is-invalid': submitted && f['adhar'].errors }" placeholder="ex: 821884539068">
+                        <!-- &nbsp;
                     <button type="button" class="btn btn-md btn-primary">validate
                         <span class="spinner-grow spinner-grow-sm"></span>
-                    </button>
+                    </button> -->
+                        @if (submitted && f['adhar'].errors) {
+                        <div class="invalid-feedback">
+                            @if (f['adhar'].errors['required']) {
+                            <div>adhar is required</div>
+                            }
+                        </div>
+                        }
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3">
-                <label for="pan" class="form-label fw-bold">Loan Type</label>
-                <select class="form-select form-select-md">
-                    <option disabled>select Loan</option>
-                    <option value="personal">Personal Loan</option>
-                    <option value="home">Home Loan</option>
-                    <option value="car">Car Loan</option>
-                    <option value="auto">Auto Loan</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="pnumber" class="form-label fw-bold">Phone Number</label>
-                <input type="number" class="form-control" placeholder="">
-            </div>
-            <div class="mb-3">
-                <label for="pnumber" class="form-label fw-bold">Email</label>
-                <input type="email" class="form-control" placeholder="talluri@gmail.com" required>
-            </div>
-            <div class="row">
-                <label for="pnumber" class="form-label fw-bold">Home Address</label>
-                <div class="col-6">
-                    <input type="text" class="form-control" placeholder="" required>
-                    <span class="add_cl">Street Address</span>
-                </div>
-                <div class="col-6">
-                    <input type="text" class="form-control" placeholder="" required>
-                    <span class="add_cl">Street Address Line2</span>
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-6">
-                    <input type="text" class="form-control" placeholder="" required>
-                    <span class="add_cl">City</span>
-                </div>
-                <div class="col-6">
-                    <input type="text" class="form-control" placeholder="" required>
-                    <span class="add_cl">State</span>
-                </div>
-
-            </div>
-            <div class="row mt-3">
-                <input type="text" class="form-control" placeholder="" required>
-                <span class="add_cl">Zipcode</span>
-            </div>
-
-        </div>
-        <div class="col-6 mt-4">
-            <h5>Work Details</h5>
-            <hr>
-            <div class="row">
                 <div class="mb-3">
-                    <label for="pan" class="form-label fw-bold">Job Title</label>
-                    <select class="form-select form-select-md">
-                        <option disabled>select Job</option>
-                        <option value="software">Soft ware</option>
-                        <option value="accounts">Accounts</option>
-                        <option value="hardware">Hard ware</option>
-                        <option value="graphic designer">Graphic Designer</option>
-                        <option value="testing">Testing</option>
+                    <label for="pan" class="form-label fw-bold">Loan Type</label>
+                    <select class="form-select form-select-md" formControlName="loantype"
+                        [ngClass]="{ 'is-invalid': submitted && f['loantype'].errors }">
+                        <option disabled>select Loan</option>
+                        <option value="personal">Personal Loan</option>
+                        <option value="home">Home Loan</option>
+                        <option value="car">Car Loan</option>
+                        <option value="auto">Auto Loan</option>
                     </select>
+                    @if (submitted && f['loantype'].errors) {
+                    <div class="invalid-feedback">
+                        @if (f['loantype'].errors['required']) {
+                        <div>loantype is required</div>
+                        }
+                    </div>
+                    }
                 </div>
-            </div>
-            <div class="row">
                 <div class="mb-3">
-                    <label for="total Years of Exp" class="form-label fw-bold">Total Years of Exp</label>
-                    <input type="number" class="form-control" placeholder="" required>
+                    <label for="pnumber" class="form-label fw-bold">Phone Number</label>
+                    <input type="number" class="form-control" formControlName="phonenumber" placeholder=""
+                        [ngClass]="{ 'is-invalid': submitted && f['phonenumber'].errors }">
+                    @if (submitted && f['phonenumber'].errors) {
+                    <div class="invalid-feedback">
+                        @if (f['phonenumber'].errors['required']) {
+                        <div>phonenumber is required</div>
+                        }
+                    </div>
+                    }
                 </div>
-            </div>
-            <div class="row">
                 <div class="mb-3">
-                    <label for="Monthly Net Income" class="form-label fw-bold">Monthly Net Income</label>
-                    <input type="number" class="form-control" placeholder="" required>
+                    <label for="pnumber" class="form-label fw-bold">Email</label>
+                    <input type="email" class="form-control" formControlName="email" placeholder="talluri@gmail.com"
+                        [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" required>
+                    @if (submitted && f['email'].errors) {
+                    <div class="invalid-feedback">
+                        @if (f['email'].errors['required']) {
+                        <div>email is required</div>
+                        }
+                    </div>
+                    }
                 </div>
-            </div>
-            <div class="row">
-                <label for="pnumber" class="form-label fw-bold">Work Address</label>
-                <div class="col-6">
-                    <input type="text" class="form-control" placeholder="" required>
-                    <span class="add_cl">Street Address</span>
+                <div class="row">
+                    <label for="pnumber" class="form-label fw-bold">Home Address</label>
+                    <div class="col-6">
+                        <input type="text" class="form-control" placeholder="" formControlName="homestreet" required
+                            [ngClass]="{ 'is-invalid': submitted && f['homestreet'].errors }">
+                        <span class="add_cl">Street Address</span>
+                        @if (submitted && f['homestreet'].errors) {
+                        <div class="invalid-feedback">
+                            @if (f['homestreet'].errors['required']) {
+                            <div>homestreet is required</div>
+                            }
+                        </div>
+                        }
+                    </div>
+                    <div class="col-6">
+                        <input type="text" class="form-control" placeholder="" formControlName="homestreet2" required
+                            [ngClass]="{ 'is-invalid': submitted && f['homestreet2'].errors }">
+                        <span class="add_cl">Street Address Line2</span>
+                        @if (submitted && f['homestreet2'].errors) {
+                        <div class="invalid-feedback">
+                            @if (f['homestreet2'].errors['required']) {
+                            <div>homestreet2 is required</div>
+                            }
+                        </div>
+                        }
+                    </div>
                 </div>
-                <div class="col-6">
-                    <input type="text" class="form-control" placeholder="" required>
-                    <span class="add_cl">Street Address Line2</span>
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <input type="text" class="form-control" formControlName="homecity" placeholder="" required
+                            [ngClass]="{ 'is-invalid': submitted && f['homecity'].errors }">
+                        <span class="add_cl">City</span>
+                        @if (submitted && f['homecity'].errors) {
+                        <div class="invalid-feedback">
+                            @if (f['homecity'].errors['required']) {
+                            <div>homecity is required</div>
+                            }
+                        </div>
+                        }
+                    </div>
+                    <div class="col-6">
+                        <input type="text" class="form-control" formControlName="homestate" placeholder="" required
+                            [ngClass]="{ 'is-invalid': submitted && f['homestate'].errors }">
+                        <span class="add_cl">State</span>
+                        @if (submitted && f['homestate'].errors) {
+                        <div class="invalid-feedback">
+                            @if (f['homestate'].errors['required']) {
+                            <div>homestate is required</div>
+                            }
+                        </div>
+                        }
+                    </div>
+
                 </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col-6">
-                    <input type="text" class="form-control" placeholder="" required>
-                    <span class="add_cl">City</span>
-                </div>
-                <div class="col-6">
-                    <input type="text" class="form-control" placeholder="" required>
-                    <span class="add_cl">State</span>
+                <div class="row mt-3">
+                    <input style="width: 97%;
+    margin-left: 11px;" type="text" class="form-control" formControlName="homezip" placeholder="" required
+                        [ngClass]="{ 'is-invalid': submitted && f['homezip'].errors }">
+                    <span class="add_cl">Zipcode</span>
+                    @if (submitted && f['homezip'].errors) {
+                    <div class="invalid-feedback">
+                        @if (f['homezip'].errors['required']) {
+                        <div>homezip is required</div>
+                        }
+                    </div>
+                    }
                 </div>
 
             </div>
-            <div class="row mt-4">
-                <input type="text" class="form-control" placeholder="" required>
-                <span class="add_cl">Zipcode</span>
-            </div>
-            <div class="mt-4">
-                <h5>Loan Details</h5>
+            <div class="col-6 mt-4">
+                <h5>Work Details</h5>
                 <hr>
                 <div class="row">
                     <div class="mb-3">
-                        <label for="Requested Loan Amount" class="form-label fw-bold">Requested Loan Amount</label>
-                        <span class="add_cl">(Max 100Lakh)</span>
-                        <input type="number" class="form-control" placeholder="" required>
+                        <label for="pan" class="form-label fw-bold">Job Title</label>
+                        <select class="form-select form-select-md" formControlName="jobtitle"
+                            [ngClass]="{ 'is-invalid': submitted && f['jobtitle'].errors }">
+                            <option disabled>select Job</option>
+                            <option value="software">Soft ware</option>
+                            <option value="accounts">Accounts</option>
+                            <option value="hardware">Hard ware</option>
+                            <option value="graphic designer">Graphic Designer</option>
+                            <option value="testing">Testing</option>
+                        </select>
+                        @if (submitted && f['jobtitle'].errors) {
+                        <div class="invalid-feedback">
+                            @if (f['jobtitle'].errors['required']) {
+                            <div>jobtitle is required</div>
+                            }
+                        </div>
+                        }
                     </div>
                 </div>
                 <div class="row">
                     <div class="mb-3">
-                        <label for="Terms in (months)" class="form-label fw-bold">Terms in <span class="add_cl">(months)</span></label>
-                        <input type="number" class="form-control" placeholder="" required>
+                        <label for="total Years of Exp" class="form-label fw-bold">Total Years of Exp</label>
+                        <input type="number" class="form-control" placeholder="" formControlName="totalex"
+                            [ngClass]="{ 'is-invalid': submitted && f['totalex'].errors }" required>
+                        @if (submitted && f['totalex'].errors) {
+                        <div class="invalid-feedback">
+                            @if (f['totalex'].errors['required']) {
+                            <div>totalex is required</div>
+                            }
+                        </div>
+                        }
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3">
+                        <label for="Monthly Net Income" class="form-label fw-bold">Monthly Net Income</label>
+                        <input type="number" class="form-control" formControlName="monthlyincome"
+                            [ngClass]="{ 'is-invalid': submitted && f['monthlyincome'].errors }" placeholder=""
+                            required>
+                        @if (submitted && f['monthlyincome'].errors) {
+                        <div class="invalid-feedback">
+                            @if (f['monthlyincome'].errors['required']) {
+                            <div>monthlyincome is required</div>
+                            }
+                        </div>
+                        }
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="pnumber" class="form-label fw-bold">Work Address</label>
+                    <div class="col-6">
+                        <input type="text" class="form-control" formControlName="workaddress" placeholder=""
+                            [ngClass]="{ 'is-invalid': submitted && f['workaddress'].errors }" required>
+                        <span class="add_cl">Street Address</span>
+                        @if (submitted && f['workaddress'].errors) {
+                        <div class="invalid-feedback">
+                            @if (f['workaddress'].errors['required']) {
+                            <div>workaddress is required</div>
+                            }
+                        </div>
+                        }
+                    </div>
+                    <div class="col-6">
+                        <input type="text" class="form-control" placeholder="" formControlName="workaddress2"
+                            [ngClass]="{ 'is-invalid': submitted && f['workaddress2'].errors }" required>
+                        <span class="add_cl">Street Address Line2</span>
+                        @if (submitted && f['workaddress2'].errors) {
+                        <div class="invalid-feedback">
+                            @if (f['workaddress2'].errors['required']) {
+                            <div>workaddress2 is required</div>
+                            }
+                        </div>
+                        }
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-6">
+                        <input type="text" class="form-control" formControlName="workcity" placeholder=""
+                            [ngClass]="{ 'is-invalid': submitted && f['workcity'].errors }" required>
+                        <span class="add_cl">City</span>
+                        @if (submitted && f['workcity'].errors) {
+                        <div class="invalid-feedback">
+                            @if (f['workcity'].errors['required']) {
+                            <div>workcity is required</div>
+                            }
+                        </div>
+                        }
+                    </div>
+                    <div class="col-6">
+                        <input type="text" class="form-control" formControlName="workstate" placeholder=""
+                            [ngClass]="{ 'is-invalid': submitted && f['workstate'].errors }" required>
+                        <span class="add_cl">State</span>
+                        @if (submitted && f['workstate'].errors) {
+                        <div class="invalid-feedback">
+                            @if (f['workstate'].errors['required']) {
+                            <div>workstate is required</div>
+                            }
+                        </div>
+                        }
+                    </div>
+
+                </div>
+                <div class="row mt-4">
+                    <input style="width: 97%;
+    margin-left: 11px;" type="text" class="form-control" formControlName="workzip" placeholder=""
+                        [ngClass]="{ 'is-invalid': submitted && f['workzip'].errors }" required>
+                    <span class="add_cl">Zipcode</span>
+                    @if (submitted && f['workzip'].errors) {
+                    <div class="invalid-feedback">
+                        @if (f['workzip'].errors['required']) {
+                        <div>workzip is required</div>
+                        }
+                    </div>
+                    }
+                </div>
+                <div class="mt-4">
+                    <h5>Loan Details</h5>
+                    <hr>
+                    <div class="row">
+                        <div class="mb-3">
+                            <label for="Requested Loan Amount" class="form-label fw-bold">Requested Loan Amount</label>
+                            <span class="add_cl">(Max 100Lakh)</span>
+                            <input type="number" class="form-control" formControlName="loanamount"
+                                [ngClass]="{ 'is-invalid': submitted && f['loanamount'].errors }" placeholder=""
+                                required>
+                            @if (submitted && f['loanamount'].errors) {
+                            <div class="invalid-feedback">
+                                @if (f['loanamount'].errors['required']) {
+                                <div>loanamount is required</div>
+                                }
+                            </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mb-3">
+                            <label for="Terms in (months)" class="form-label fw-bold">Terms in <span
+                                    class="add_cl">(months)</span></label>
+                            <input type="number" class="form-control" formControlName="terms"
+                                [ngClass]="{ 'is-invalid': submitted && f['terms'].errors }" placeholder="" required>
+                            @if (submitted && f['terms'].errors) {
+                            <div class="invalid-feedback">
+                                @if (f['terms'].errors['required']) {
+                                <div>terms is required</div>
+                                }
+                            </div>
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- @if(loader){
+            <div class="loader"></div>
+            } -->
+
+            <div class="form-group" style="margin: 40px 0px;">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" style="margin: 10px 21px;" (click)="onReset()"
+                    class="btn btn-warning float-right">
+                    Reset
+                </button>
+            </div>
         </div>
-        
-    </div>
+    </form>
 </div>

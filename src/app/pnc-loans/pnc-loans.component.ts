@@ -1,5 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { LabelType, NgxSliderModule } from '@angular-slider/ngx-slider';
+import { LabelType, NgxSliderModule, } from '@angular-slider/ngx-slider';
 import { FormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
 import { RouterLink } from '@angular/router';
