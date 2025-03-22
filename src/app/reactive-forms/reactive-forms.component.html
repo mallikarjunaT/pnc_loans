@@ -1,0 +1,89 @@
+<div class="container">
+    <h3 class="mr-6">reactive-forms works!</h3>
+    <form [formGroup]="myform" (ngSubmit)="submitform()">
+        <div class="div w-25">
+            <div class="form-group ">
+                <label for="fname">First Name</label>
+                <input type="text" name="" class="form-control" formControlName="fname">
+            </div>
+            @if (mfm['fname'].errors) {
+            @if(mfm['fname'].errors['required'] && mfm['fname'].touched){
+            <span class="rd-color">first name is required</span>
+            }
+            @if(mfm['fname'].errors['maxlength']){
+            <span class="rd-color">max length is 20</span><br>
+            }
+            @if(mfm['fname'].errors['minlength']){
+            <span class="rd-color">min length is 5</span><br>
+            }
+            @if(mfm['fname'].errors['pattern']){
+            <span class="rd-color">allow only characters</span>
+            }
+            }
+            <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input type="text" name="" class="form-control" formControlName="lname">
+            </div> @if (mfm['lname'].errors) {
+            @if(mfm['lname'].errors['required'] && mfm['lname'].touched){
+            <span class="rd-color">last name is required</span>
+            }
+            @if(mfm['lname'].errors['maxlength']){
+            <span class="rd-color">max length is 15</span><br>
+            }
+            @if(mfm['lname'].errors['minlength']){
+            <span class="rd-color">min length is 1</span><br>
+            }
+            @if(mfm['lname'].errors['pattern']){
+            <span class="rd-color">allow only characters</span>
+            }
+            }
+            <div class="form-group">
+                <label for="contact">Phone</label>
+                <input type="text" name="" class="form-control" formControlName="contact">
+            </div>
+            @if (mfm['contact'].errors) {
+            @if(mfm['contact'].errors['required'] && mfm['contact'].touched){
+            <span class="rd-color">phone number is required</span>
+            }
+            @if(mfm['contact'].errors['maxlength']){
+            <span class="rd-color">max length is 10</span><br>
+            }
+            @if(mfm['contact'].errors['pattern']){
+            <span class="rd-color">enter valid number</span>
+            }
+            }
+            <div class="form-group">
+                <label for="state">State</label>
+                <select class="form-control dropdown dropdown-toggle" formControlName="state">
+                    <option class="dropdown-item">AP</option>
+                    <option>TG</option>
+                    <option>UP</option>
+                    <option>GA</option>
+                </select>
+            </div>
+            @if (mfm['state'].errors) {
+            @if(mfm['state'].errors['required'] && mfm['state'].touched){
+            <span class="rd-color">state is required</span>
+            }           
+            }
+            <div class="form-group">
+                <label for="zipcode">Zip code</label>
+                <input type="text" name="" class="form-control" formControlName="zipcode">
+            </div>
+            @if (mfm['zipcode'].errors) {
+                @if(mfm['zipcode'].errors['required'] && mfm['zipcode'].touched){
+                <span class="rd-color">zipcode is required</span>
+                }
+                @if(mfm['zipcode'].errors['maxlength']){
+                <span class="rd-color">max length is 6</span><br>
+                }
+                @if(mfm['zipcode'].errors['pattern']){
+                <span class="rd-color">enter valid zipcode</span>
+                }
+                }
+           
+            <br>
+            <button type="submit" class="btn btn-primary" [disabled]="!myform.valid">submit</button>
+        </div>
+    </form>
+</div>
