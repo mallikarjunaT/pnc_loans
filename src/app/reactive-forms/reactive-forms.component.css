@@ -1,10 +1,26 @@
 input.ng-invalid.ng-touched {
     border: 1px solid red;
 }
+
 select.ng-invalid.ng-touched {
     border: 1px solid red;
 }
 
 .rd-color {
     color: red;
+}
+
+.address {
+    border: 1px solid lightblue;
+    border-radius: 10px;
+    padding: 9px;
+    display: flex;
+    flex-direction: column;
+}
+
+.address.ng-untouched.ng-pristine.ng-invalid {
+    margin-bottom: 10px;
+}
+.address.ng-dirty.ng-touched.ng-valid {
+    margin-bottom: 10px;
 }
